@@ -42,4 +42,6 @@ with open("run_info.json", "w") as json_file:
 print(run_info["data"]["metrics"])
 
 # COMMAND ----------
-print(run_info["data"]["param"])
+print(run_info["data"]["params"])
+
+# COMMAND ----------

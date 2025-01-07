@@ -1,5 +1,4 @@
 from datetime import datetime, timezone
-
 import pandas as pd
 import yaml
 from pyspark.sql import SparkSession
@@ -7,13 +6,17 @@ from sklearn.model_selection import train_test_split
 
 spark = SparkSession.builder.getOrCreate()
 
-with open("project_config.yml", "r") as file:
+with open("/Users/filo.gzz/Desktop/Filo/Projects/mastercard/mlops/LinkedinMLOps/mlops-with-databricks/mlops-with-databricks-2019584/project_config.yml", "r") as file:
     config = yaml.safe_load(file)
 
 catalog_name = config.get("catalog_name")
 schema_name = config.get("schema_name")
+print(schema_name)
 
-df = pd.read_csv("data/booking.csv")
+spark.sql(f"CREATE CATALOG IF NOT EXISTS {catalog_name}")
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {schema_name}")
+
+df = pd.read_csv("/Users/filo.gzz/Desktop/Filo/Projects/mastercard/mlops/LinkedinMLOps/mlops-with-databricks/mlops-with-databricks-2019584/data/booking.csv")
 df["date of reservation"] = (
     df["date of reservation"]
     .apply(lambda x: "3/1/2018" if x == "2018-2-29" else x)

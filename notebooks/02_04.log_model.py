@@ -13,7 +13,7 @@ mlflow.set_registry_uri("databricks-uc")
 mlflow.set_tracking_uri("databricks")
 
 # COMMAND ----------
-with open("../project_config.yml", "r") as file:
+with open("/Users/filo.gzz/Desktop/Filo/Projects/mastercard/mlops/LinkedinMLOps/mlops-with-databricks/mlops-with-databricks-2019584/project_config.yml", "r") as file:
     config = yaml.safe_load(file)
 
 num_features = config.get("num_features")
