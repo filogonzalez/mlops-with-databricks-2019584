@@ -79,3 +79,5 @@ with mlflow.start_run(
         artifact_path="pyfunc-model",
         signature=signature,
     )
+
+# COMMAND ----------
